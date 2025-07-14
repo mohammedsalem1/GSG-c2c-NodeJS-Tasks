@@ -1,1 +1,1 @@
-# GSG-c2c-NodeJS-Tasks
+# Task 3 -Reading & Summarizing: Iterable Protocol and Generators in JavaScript
