@@ -7,7 +7,7 @@ The iterator protocol defines an standard to produce a sequence of values. This 
 
 The next() method always returns an object with value and done properties. The value property contains the value to be returned and the done property indicates the termination of the iterator. You can call the next method whenever you want, but in this example after the third call, you will be receiving { value: undefined, done: true }. If you consume this code, you need to check when the property done is true in your code logic
 
-<details>
+### <details>
   <summary>example Iterator protocol</summary>
   
   ```
@@ -54,7 +54,7 @@ The Generator object is returned by a generator function and it conforms to both
 A generator is a special function that can pause and resume its execution using the yield keyword.
 
 
-<details>
+### <details>
   <summary>example generator</summary>
   
   ```
