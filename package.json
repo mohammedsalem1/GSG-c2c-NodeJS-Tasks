@@ -1,0 +1,37 @@
+{
+  "name": "gsg-c2c-nodejs-tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch ./src/server.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks/issues"
+  },
+  "homepage": "https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks#readme",
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "argon2": "^0.44.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
