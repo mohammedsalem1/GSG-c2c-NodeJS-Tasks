@@ -48,7 +48,7 @@ export const isAuthOwnerOrAdmin = () => {
   const allowedRoles = ["COACH", "ADMIN"];
 
   if (!checkRole || !allowedRoles.includes(checkRole)) {
-    throw new CustomError("Forbidden", "USER", HttpStatusCode.UNAUTHORIZED);
+    throw new CustomError("Access denied: user must be a COACH or ADMIN", "USER", HttpStatusCode.FORBIDDEN);
   }
   next()
   }  
@@ -58,7 +58,7 @@ export const isAuthorized = (roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const cheakRole = req.user?.role; 
     if (!cheakRole || !roles.includes(cheakRole)) {
-       throw new CustomError("Forbidden",  'USER' ,HttpStatusCode. UNAUTHORIZED);
+       throw new CustomError("Forbidden: insufficient role",  'USER' ,HttpStatusCode.FORBIDDEN);
     }
     next();
   };
