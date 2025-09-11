@@ -1,6 +1,6 @@
 import z , {ZodType} from 'zod'
 import { Role, type User,   } from '../user.entity.js'
-import type { UpdateUserDTO } from '../user.dto.js'
+import type { CreateCoachDTO, UpdateUserDTO } from '../user.dto.js'
 
 export const userSchema = z.object({
    id: z.string(),
@@ -12,9 +12,8 @@ export const userSchema = z.object({
    updatedAt: z.date() 
 }) satisfies ZodType<User>
 
-
-export const UpdateUserDTOSchema = userSchema.pick({
-   name :true ,
-
-
-})satisfies ZodType<UpdateUserDTO>
+export const CreateCoachDTOSchema = userSchema.pick({
+    name: true,
+    email :true,
+    password:true
+}) satisfies ZodType<CreateCoachDTO>

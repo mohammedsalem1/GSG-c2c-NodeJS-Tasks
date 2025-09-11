@@ -5,6 +5,7 @@ import 'dotenv/config'
 import { usersRouter } from './users/user.routes.js';
 import { authRouter } from './auth/auth.routes.js';
 import { seedDate } from './shared/utils/initail-date.js';
+import { courseRouter } from './courses/course.routes.js';
 
 const port = process.env.PORT
 const jwt = process.env.JWT_SECRET
@@ -22,7 +23,7 @@ seedDate()
 
 app.use('/auth' , authRouter)
 app.use('/users' , usersRouter)
-// app.use('/courses' , coursesRouter)
+app.use('/courses' , courseRouter)
 
 
 app.use((err:unknown, req:Request, res:Response, next:NextFunction) => {

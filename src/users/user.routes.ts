@@ -11,7 +11,8 @@ router.use(isAuthenticated)
 
  // // PUT /users/me → Update current profile.
 router.put('/me' , userController.updateProfile)
+
 // // POST /users/coach → : create a COACH user.
-router.post('/coach', isAuthorized(["Admin"]) ,userController.createCoach)
+router.post('/coach', isAuthorized([Role.ADMIN]) , userController.createCoach)
 
 export const usersRouter = router

@@ -31,9 +31,8 @@ export class BaseRepository<T extends DbEntity> implements Repository<T> {
              id: Date.now().toString() ,
              createdAt:new Date(),
              updatedAt:new Date()
-            }  as T ; 
+            } as T ; 
         this.items.push(newItem);
-  
         return newItem;
     }
 

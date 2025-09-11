@@ -4,7 +4,6 @@ import { CustomError } from "../exception.js";
 import { HttpStatusCode, type PaylaodJWT } from "../utils/util.types.js";
 import { userRepository } from "../../users/user.repository.js";
 import type { JwtPayload } from "jsonwebtoken";
-import type { User } from "../../users/user.entity.js";
 
 export const isAuthenticated = async(
     req:Request , 
@@ -43,13 +42,24 @@ export const isAuthenticated = async(
     ) 
 } 
 
-export const isAuthOwnerOrAdmin = (req:Request , res:Response , next:NextFunction) => {
+export const isAuthOwnerOrAdmin = () => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const checkRole = req.user?.role;
+  const allowedRoles = ["COACH", "ADMIN"];
 
-}
+  if (!checkRole || !allowedRoles.includes(checkRole)) {
+    throw new CustomError("Forbidden", "USER", HttpStatusCode.UNAUTHORIZED);
+  }
+  next()
+  }  
+};
+
 export const isAuthorized = (roles: string[]) => {
-  return (req: Request, _res: Response, next: NextFunction) => {
-    const user = (req as any).user;
-    if (!roles.includes(user.role)) throw new CustomError("Forbidden",  'USER' ,HttpStatusCode.UNAUTHORIZED);
+  return (req: Request, res: Response, next: NextFunction) => {
+    const cheakRole = req.user?.role; 
+    if (!cheakRole || !roles.includes(cheakRole)) {
+       throw new CustomError("Forbidden",  'USER' ,HttpStatusCode. UNAUTHORIZED);
+    }
     next();
   };
 }
