@@ -1,6 +1,5 @@
-import type { RegisterDTO } from "../../auth/auth.dto.js";
 import { createArgonHash } from "../../auth/utils/argon.utils.js";
-import type { Course } from "../../courses/utils/course.schema.js";
+import type { Course } from "../../courses/course.entity.js";
 import { Role, type User } from "../../users/user.entity.js";
 
 export const users:User[] = [];

@@ -1,11 +1,11 @@
 import type { ModuleNameType } from "./constant.js";
 import type { Response } from "express";
-import type { HttpStatusCode } from "./utils/util.types.js";
+import type { ErrorStatusCode, HttpErrorStatusType } from "./utils/util.types.js";
 export class CustomError extends Error {
     constructor(
         message:string , 
         public moduleName:ModuleNameType , 
-        public statusCode:HttpStatusCode){
+        public statusCode:ErrorStatusCode){
         super(message)
     }
 }
