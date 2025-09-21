@@ -1,7 +1,7 @@
 import { ZodError, ZodType } from "zod";
 import type { ModuleNameType } from "../constant.js";
 import { CustomError } from "../exception.js";
-import { HttpStatusCode } from "./util.types.js";
+import { HttpErrorStatus } from "./util.types.js";
 
 export const ZodValidation = <T>(schema:ZodType<T> , payload:T , moduleName:ModuleNameType) => {
      try {
@@ -11,7 +11,7 @@ export const ZodValidation = <T>(schema:ZodType<T> , payload:T , moduleName:Modu
         return safeDate
      } catch (error) {
         if (error instanceof ZodError) {
-            throw new CustomError(error.message , moduleName , HttpStatusCode.BAD_REQUEST)
+            throw new CustomError(error.message , moduleName , HttpErrorStatus.BadRequest)
         }
         throw error
      }

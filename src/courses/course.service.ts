@@ -1,7 +1,6 @@
 import { CustomError } from "../shared/exception.js";
-import { HttpStatusCode } from "../shared/utils/util.types.js";
+import { HttpErrorStatus } from "../shared/utils/util.types.js";
 import type { CreateCourseDTO, UpdateCourseDTO } from "./course.dto.js";
-import type { Course } from "./course.entity.js";
 import { courseRepository } from "./course.repository.js";
 
 export class CourseService {
@@ -16,7 +15,7 @@ export class CourseService {
     async getCourseById(courseId:string) {
         const course = await courseRepository.findById(courseId)
         if (!course) {
-            throw new CustomError("the user don't have course",'COURSE',HttpStatusCode.BAD_REQUEST)
+            throw new CustomError("the user don't have course",'COURSE',HttpErrorStatus.BadRequest)
         }
         return course
     }
@@ -24,7 +23,7 @@ export class CourseService {
     
                 const course = await courseRepository.update(courseId , updateDate)
                 if (!course) {
-                   throw new CustomError('user not found','USER',HttpStatusCode.BAD_REQUEST)
+                   throw new CustomError('Course is not found','USER',HttpErrorStatus.NotFound)
                 }
                 return course
     }
@@ -32,7 +31,7 @@ export class CourseService {
     async deleteCourse(courseId:string) {
         const isDeleted = await courseRepository.delete(courseId)
         if (!isDeleted) {
-            throw new CustomError("the user don't have course",'COURSE',HttpStatusCode.NOT_FOUND)
+            throw new CustomError("the user don't have course",'COURSE',HttpErrorStatus.NotFound)
         }
         return isDeleted;
     }

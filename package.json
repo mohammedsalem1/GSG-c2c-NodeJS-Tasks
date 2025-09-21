@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "tsx watch ./src/server.ts",
     "type-check": "tsc --noEmit"
   },
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
+    "ts-jest": "^29.4.4",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

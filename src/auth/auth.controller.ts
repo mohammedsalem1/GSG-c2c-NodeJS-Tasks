@@ -4,8 +4,9 @@ import { ZodValidation } from "../shared/utils/zod.utils.js";
 import { LoginDTOSchema, RegisterDTOSchema } from "./utils/auth.schema.js";
 import { authService, AuthService } from "./auth.service.js";
 import { CustomError } from "../shared/exception.js";
-import { HttpStatusCode } from "../shared/utils/util.types.js";
 import { signJWT } from "./utils/jwt.utils.js";
+import { HttpErrorStatus } from "../shared/utils/util.types.js";
+import { removeFields } from "../shared/utils/object.utils.js";
 
 export class AuthController {
 
@@ -14,23 +15,28 @@ export class AuthController {
          try {
             const payloadDate = ZodValidation(RegisterDTOSchema , req.body , 'AUTH');
             const user = await authService.register(payloadDate);
-            res.json(user)
+            res.ok(user)
+            
          } catch (error) {
               console.log(error)
-              throw new CustomError('something is error' , 'AUTH' , HttpStatusCode.BAD_REQUEST)
-         }      
+               if (error instanceof Error) {
+                  throw new CustomError(error.message, "AUTH", HttpErrorStatus.BadRequest);
+          }
+            throw new CustomError("Unknown error", "AUTH", HttpErrorStatus.BadRequest);
+       }
     }
+              
+    
 
     public async login(req:Request<{},{}, LoginDTO> , res:Response<LoginResponseDTO | string> , next:NextFunction) {
          
     const payloadData = ZodValidation(LoginDTOSchema, req.body, 'AUTH');
     const userData = await authService.login(payloadData);
     if (!userData) {
-      res.status(HttpStatusCode.BAD_REQUEST).send('wrong credentials');
-      return;
+      res.error({message:"validation error" , statusCode:HttpErrorStatus.BadRequest})
+      return
     }
-   
-    res.json(userData)              
+    res.ok(userData)              
     }
 
     public async loginWithJWT(req:Request<{},{}, LoginDTO> , res:Response<LoginResponseDTOWithJWT | string> , next:NextFunction) {
@@ -38,11 +44,11 @@ export class AuthController {
     const payloadData = ZodValidation(LoginDTOSchema, req.body, 'AUTH');
     const userData = await authService.login(payloadData);
     if (!userData) {
-      res.status(HttpStatusCode.BAD_REQUEST).send('wrong credentials');
+       res.error({message:"validation error" , statusCode:HttpErrorStatus.BadRequest})
       return;
     }
     const token = signJWT({sub:userData.id , name:userData.name})
-    res.json({date:userData , token})              
+    res.ok({date:userData , token})              
     }
 }
 export const authController = new AuthController()

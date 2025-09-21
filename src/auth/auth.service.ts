@@ -1,7 +1,4 @@
-import { CustomError } from "../shared/exception.js";
 import { removeFields } from "../shared/utils/object.utils.js";
-import { HttpStatusCode } from "../shared/utils/util.types.js";
-import { Role, type User } from "../users/user.entity.js";
 import { userService } from "../users/user.service.js";
 import type { LoginDTO, RegisterDTO, RegisterResponseDTO } from "./auth.dto.js";
 import { createArgonHash, verifyArgonHash } from "./utils/argon.utils.js";

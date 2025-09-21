@@ -3,22 +3,25 @@ export type PaylaodJWT = {
     id:string, 
     name:string , 
   }
+export type StringObject = Record<string, unknown>;
 
-export enum HttpStatusCode {
-  // 4xx Client Errors
-  BAD_REQUEST = 400,
-  UNAUTHORIZED = 401,
-  FORBIDDEN = 403,
-  NOT_FOUND = 404,
-  METHOD_NOT_ALLOWED = 405,
-  REQUEST_TIMEOUT = 408,
-  CONFLICT = 409,
-  TOO_MANY_REQUESTS = 429,
+export const HttpErrorStatus = {
+  // Client Errors (400–499)
+  BadRequest: 400, // Invalid request payload / params
+  Unauthorized: 401, // Missing or invalid authentication
+  Forbidden: 403, // Authenticated but not allowed
+  NotFound: 404, // Resource doesn’t exist
+  // InternalServerError: 500, // Generic server crash / bug
 
-  // 5xx Server Errors
-  INTERNAL_SERVER_ERROR = 500,
-  NOT_IMPLEMENTED = 501,
-  BAD_GATEWAY = 502,
-  SERVICE_UNAVAILABLE = 503,
-  GATEWAY_TIMEOUT = 504
-}
+} as const;
+
+export type HttpErrorStatusType = typeof HttpErrorStatus;
+
+export type ErrorStatusCode = HttpErrorStatusType[keyof HttpErrorStatusType];
+
+export type ApiStatusCode =
+  | ErrorStatusCode
+  | 200 // OK — Request succeeded
+  | 201 // Created — Resource created successfully
+  | 202 // Accepted — Request accepted, processing asynchronously
+  | 204; // No Content — Successful but no response body
