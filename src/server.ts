@@ -7,17 +7,17 @@ import { authRouter } from './auth/auth.routes.js';
 import { seedDate } from './shared/utils/initail-date.js';
 import { courseRouter } from './courses/course.routes.js';
 import { responseEnhancer } from './shared/middleware/response.middleware.js';
+import { env } from 'process';
 
 const port = process.env.PORT
 
-const app = express();
+export const app = express();
 
 // cheak if content header ? handle stream and decode & deserilizable => req.body = {json} and under the hood make next()
 app.use(express.json())
 
 app.use(express.urlencoded())
 seedDate()
-
 app.use(responseEnhancer)
 app.use('/auth' , authRouter)
 app.use('/users' , usersRouter)
@@ -27,7 +27,10 @@ app.use('/courses' , courseRouter)
 app.use((err:unknown, req:Request, res:Response, next:NextFunction) => {
     handleError(err , res)
 })
+console.log(process.env.NODE_ENV)
 
-app.listen(port , () => {
-    console.log(`server is runing on port ${port}`)
-})
+if(process.env.NODE_ENV !== 'test') {
+  app.listen(port , () => {
+     console.log(`server is runing on port ${port}`)
+ })
+}

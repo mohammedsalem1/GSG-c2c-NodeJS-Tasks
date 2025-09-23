@@ -5,7 +5,9 @@ import { Role } from "./user.entity.js";
 
 const router = Router();
 router.use(isAuthenticated)
-
+router.get('/', (req, res) => {
+  res.status(200).json({ message: 'ok' });
+});
 // GET /users/me → Get current user profile (protected).
   router.get('/me' , userController.getCurrentUser)
 
