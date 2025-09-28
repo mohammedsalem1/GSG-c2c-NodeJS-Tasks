@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks#readme",
   "dependencies": {
+    "@prisma/client": "^6.16.2",
     "@types/jsonwebtoken": "^9.0.10",
     "argon2": "^0.44.0",
     "dotenv": "^17.2.2",
@@ -31,7 +32,11 @@
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
+    "prisma": "^6.16.2",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
-  }
+  } ,
+  "prisma": {
+  "seed": "ts-node prisma/seed.ts"
+ }
 }
