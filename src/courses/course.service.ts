@@ -21,7 +21,7 @@ export class CourseService {
     }
     async updateCourse(courseId:string , updateDate:UpdateCourseDTO){
     
-                const course = await courseRepository.update(courseId , updateDate)
+                const course = await  courseRepository.update(courseId , updateDate)
                 if (!course) {
                    throw new CustomError('Course is not found','USER',HttpErrorStatus.NotFound)
                 }
