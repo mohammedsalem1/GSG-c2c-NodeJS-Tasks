@@ -1,7 +1,7 @@
-import { CustomError } from "../shared/exception.js";
-import { HttpErrorStatus } from "../shared/utils/util.types.js";
-import type { CreateCourseDTO, UpdateCourseDTO } from "./course.dto.js";
-import { courseRepository } from "./course.repository.js";
+import { CustomError } from "../shared/exception";
+import { HttpErrorStatus } from "../shared/utils/util.types";
+import type { CreateCourseDTO, UpdateCourseDTO } from "./course.dto";
+import { courseRepository } from "./course.repository";
 
 export class CourseService {
     async createCourse(payload:CreateCourseDTO) {

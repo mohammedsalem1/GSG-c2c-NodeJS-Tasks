@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { courseController } from "./course.controller.js";
-import { isAuthenticated, isAuthOwnerOrAdmin } from "../shared/middleware/auth.middleware.js";
+import { courseController } from "./course.controller";
+import { isAuthenticated, isAuthOwnerOrAdmin } from "../shared/middleware/auth.middleware";
 
 export const courseRouter = Router()
    courseRouter.use(isAuthenticated);

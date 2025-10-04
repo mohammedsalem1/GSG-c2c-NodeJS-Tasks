@@ -1,11 +1,11 @@
 import type { Request , Response , NextFunction } from "express-serve-static-core";
-import type { CreateCourseDTO } from "./course.dto.js";
-import type { Course } from "./course.entity.js";
-import { ZodValidation } from "../shared/utils/zod.utils.js";
-import { CreateCourseDTOSchema } from "./utils/course.schema.js";
-import { courseService } from "./course.service.js";
-import { CustomError } from "../shared/exception.js";
-import { HttpErrorStatus } from "../shared/utils/util.types.js";
+import type { CreateCourseDTO } from "./course.dto";
+import type { Course } from "./course.entity";
+import { ZodValidation } from "../shared/utils/zod.utils";
+import { CreateCourseDTOSchema } from "./utils/course.schema";
+import { courseService } from "./course.service";
+import { CustomError } from "../shared/exception";
+import { HttpErrorStatus } from "../shared/utils/util.types";
 
 export class CourseController {
   

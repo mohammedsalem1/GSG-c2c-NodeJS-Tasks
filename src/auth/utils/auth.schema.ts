@@ -1,7 +1,7 @@
 import type { ZodType } from "zod";
-import { userSchema } from "../../users/utils/user.schema.js";
-import type { LoginDTO, RegisterDTO } from "../auth.dto.js";
-import { xid } from "zod/v4";
+import { userSchema } from "../../users/utils/user.schema";
+import type { LoginDTO, RegisterDTO } from "../auth.dto";
+
 
 export const RegisterDTOSchema = userSchema.pick({
     

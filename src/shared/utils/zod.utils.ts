@@ -1,7 +1,7 @@
 import { ZodError, ZodType } from "zod";
-import type { ModuleNameType } from "../constant.js";
-import { CustomError } from "../exception.js";
-import { HttpErrorStatus } from "./util.types.js";
+import type { ModuleNameType } from "../constant";
+import { CustomError } from "../exception";
+import { HttpErrorStatus } from "./util.types";
 
 export const ZodValidation = <T>(schema:ZodType<T> , payload:T , moduleName:ModuleNameType) => {
      try {

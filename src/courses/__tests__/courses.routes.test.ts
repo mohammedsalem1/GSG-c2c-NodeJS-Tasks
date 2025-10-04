@@ -1,7 +1,9 @@
-import { describe, expect, it } from "vitest";
-import { authorizedTestAgent } from "../../../tests/helper/supertest.helper.js";
-import { extractFields, removeFields } from "../../shared/utils/object.utils.js";
-import { createRandomCourses } from "../../seeds/course.seed.js";
+import { authorizedTestAgent } from "../../../tests/helper/supertest.helper"
+import { createRandomCourses } from "../../seeds/course.seed"
+import { extractFields } from "../../shared/utils/object.utils"
+
+
+
 
 describe('Testing courses' , () => {
     it('GET /courses return all courses', async () => {

@@ -1,6 +1,6 @@
 import z , {ZodType} from 'zod'
-import { Role, type User,   } from '../user.entity.js'
-import type { CreateCoachDTO, UpdateUserDTO } from '../user.dto.js'
+import { Role, type User,   } from '../user.entity'
+import type { CreateCoachDTO, UpdateUserDTO } from '../user.dto'
 
 export const userSchema = z.object({
    id: z.string(),

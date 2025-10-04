@@ -1,13 +1,12 @@
 import express, { response } from 'express';
 import type { Request, Response, NextFunction } from 'express';
-import { handleError } from './shared/exception.js';
+import { handleError } from './shared/exception';
 import 'dotenv/config'
-import { usersRouter } from './users/user.routes.js';
-import { authRouter } from './auth/auth.routes.js';
-import { seedDate } from './shared/utils/initail-date.js';
-import { courseRouter } from './courses/course.routes.js';
-import { responseEnhancer } from './shared/middleware/response.middleware.js';
-import { env } from 'process';
+import { usersRouter } from './users/user.routes';
+import { authRouter } from './auth/auth.routes';
+import { seedDate } from './shared/utils/initail-date';
+import { courseRouter } from './courses/course.routes';
+import { responseEnhancer } from './shared/middleware/response.middleware';
 
 const port = process.env.PORT
 

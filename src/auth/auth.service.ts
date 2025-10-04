@@ -1,7 +1,7 @@
-import { removeFields } from "../shared/utils/object.utils.js";
-import { userService } from "../users/user.service.js";
-import type { LoginDTO, RegisterDTO, RegisterResponseDTO } from "./auth.dto.js";
-import { createArgonHash, verifyArgonHash } from "./utils/argon.utils.js";
+import { removeFields } from "../shared/utils/object.utils";
+import { userService } from "../users/user.service";
+import type { LoginDTO, RegisterDTO, RegisterResponseDTO } from "./auth.dto";
+import { createArgonHash, verifyArgonHash } from "./utils/argon.utils";
 
 export class AuthService {
 

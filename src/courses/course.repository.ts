@@ -1,6 +1,6 @@
-import { BaseRepository } from "../shared/generic-repository.js";
-import { courses } from "../shared/utils/initail-date.js";
-import type { Course } from "./course.entity.js";
+import { BaseRepository } from "../shared/generic-repository";
+import { courses } from "../shared/utils/initail-date";
+import type { Course } from "./course.entity";
 
 export class CourseRepository extends BaseRepository<Course> {
    constructor(){

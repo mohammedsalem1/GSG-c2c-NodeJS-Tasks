@@ -1,6 +1,6 @@
-import { app } from "../../src/server.js"
+import { app } from "../../src/server"
 import request from "supertest"
-import { signJWT } from "../../src/auth/utils/jwt.utils.js"
+import { signJWT } from "../../src/auth/utils/jwt.utils"
 
 
 const token = signJWT({ sub:'1' , name: "admin123" })

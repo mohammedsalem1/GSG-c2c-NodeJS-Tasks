@@ -1,9 +1,8 @@
 import { faker } from "@faker-js/faker";
-import { createArgonHash } from "../../auth/utils/argon.utils.js";
-import type { Course } from "../../courses/course.entity.js";
-import { createRandomCourses } from "../../seeds/course.seed.js";
-import { Role, type User } from "../../users/user.entity.js";
-import { count } from "console";
+import { createArgonHash } from "../../auth/utils/argon.utils";
+import type { Course } from "../../courses/course.entity";
+import { createRandomCourses } from "../../seeds/course.seed";
+import { Role, type User } from "../../users/user.entity";
 
 export const users:User[] = [];
 

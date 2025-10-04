@@ -1,9 +1,9 @@
 import type {Request , Response, NextFunction } from "express";
-import { verifyJWT } from "../../auth/utils/jwt.utils.js";
-import { CustomError } from "../exception.js";
-import { userRepository } from "../../users/user.repository.js";
+import { verifyJWT } from "../../auth/utils/jwt.utils";
+import { CustomError } from "../exception";
+import { userRepository } from "../../users/user.repository";
 import type { JwtPayload } from "jsonwebtoken";
-import { HttpErrorStatus } from "../utils/util.types.js";
+import { HttpErrorStatus } from "../utils/util.types";
 
 export const isAuthenticated = async(
     req:Request , 

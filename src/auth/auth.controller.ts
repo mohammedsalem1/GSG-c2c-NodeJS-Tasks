@@ -1,12 +1,11 @@
 import type { NextFunction ,Request , Response } from "express";
-import type { LoginDTO, LoginResponseDTO, LoginResponseDTOWithJWT, RegisterDTO, RegisterResponseDTO } from "./auth.dto.js";
-import { ZodValidation } from "../shared/utils/zod.utils.js";
-import { LoginDTOSchema, RegisterDTOSchema } from "./utils/auth.schema.js";
-import { authService, AuthService } from "./auth.service.js";
-import { CustomError } from "../shared/exception.js";
-import { signJWT } from "./utils/jwt.utils.js";
-import { HttpErrorStatus } from "../shared/utils/util.types.js";
-import { removeFields } from "../shared/utils/object.utils.js";
+import type { LoginDTO, LoginResponseDTO, LoginResponseDTOWithJWT, RegisterDTO, RegisterResponseDTO } from "./auth.dto";
+import { ZodValidation } from "../shared/utils/zod.utils";
+import { LoginDTOSchema, RegisterDTOSchema } from "./utils/auth.schema";
+import { authService, AuthService } from "./auth.service";
+import { CustomError } from "../shared/exception";
+import { signJWT } from "./utils/jwt.utils";
+import { HttpErrorStatus } from "../shared/utils/util.types";
 
 export class AuthController {
 

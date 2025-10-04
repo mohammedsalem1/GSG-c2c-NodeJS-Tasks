@@ -1,6 +1,6 @@
-import { BaseRepository } from "../shared/generic-repository.js";
-import { users } from "../shared/utils/initail-date.js";
-import type { User } from "./user.entity.js";
+import { BaseRepository } from "../shared/generic-repository";
+import { users } from "../shared/utils/initail-date";
+import type { User } from "./user.entity";
 
 export class UserRepository extends BaseRepository<User> {
    

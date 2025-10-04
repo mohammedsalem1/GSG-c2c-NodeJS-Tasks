@@ -1,10 +1,10 @@
 import type { NextFunction, Request , Response } from "express";
-import { CustomError } from "../shared/exception.js";
-import { userService } from "./user.service.js";
-import type { CreateCoachDTO, CreateResponseCoachDTO, UpdateUserDTO } from "./user.dto.js";
-import { ZodValidation } from "../shared/utils/zod.utils.js";
-import { CreateCoachDTOSchema} from "./utils/user.schema.js";
-import { HttpErrorStatus } from "../shared/utils/util.types.js";
+import { CustomError } from "../shared/exception";
+import { userService } from "./user.service";
+import type { CreateCoachDTO, CreateResponseCoachDTO, UpdateUserDTO } from "./user.dto";
+import { ZodValidation } from "../shared/utils/zod.utils";
+import { CreateCoachDTOSchema} from "./utils/user.schema";
+import { HttpErrorStatus } from "../shared/utils/util.types";
 
 export class UsersController {
 //    GET /users/me → Get current user profile (protected). 

@@ -1,4 +1,4 @@
-import type { Course } from "./course.entity.js";
+import type { Course } from "./course.entity";
 
 export type CreateCourseDTO = Pick<Course , 'title' | 'description'|'image'>
 

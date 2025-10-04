@@ -1,10 +1,10 @@
-import { createArgonHash } from "../auth/utils/argon.utils.js";
-import { CustomError } from "../shared/exception.js"
-import { removeFields } from "../shared/utils/object.utils.js";
-import { HttpErrorStatus } from "../shared/utils/util.types.js";
-import type {  CreateCoachDTO, CreateResponseCoachDTO, UpdateUserDTO } from "./user.dto.js";
-import { Role, type User } from "./user.entity.js"
-import { userRepository  } from "./user.repository.js";
+import { createArgonHash } from "../auth/utils/argon.utils";
+import { CustomError } from "../shared/exception"
+import { removeFields } from "../shared/utils/object.utils";
+import { HttpErrorStatus } from "../shared/utils/util.types";
+import type {  CreateCoachDTO, CreateResponseCoachDTO, UpdateUserDTO } from "./user.dto";
+import { Role, type User } from "./user.entity"
+import { userRepository  } from "./user.repository";
 
 export class UserService {
     //    GET /users/me → Get current user profile (protected). 
