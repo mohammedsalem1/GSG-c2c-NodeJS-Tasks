@@ -7,7 +7,7 @@ import { Role, type User } from "../../users/user.entity";
 export const users:User[] = [];
 
 export const seedDate  = async () =>{
-    users.push({ 
+   await users.push({ 
       id: '1', 
       name: 'admin123',
       email: ' admin@no.com',

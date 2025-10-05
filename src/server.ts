@@ -26,8 +26,8 @@ app.use('/courses' , courseRouter)
 app.use((err:unknown, req:Request, res:Response, next:NextFunction) => {
     handleError(err , res)
 })
-console.log(process.env.NODE_ENV)
-
+const jwt = process.env.JWT_SECRET;
+console.log(jwt);
 if(process.env.NODE_ENV !== 'test') {
   app.listen(port , () => {
      console.log(`server is runing on port ${port}`)

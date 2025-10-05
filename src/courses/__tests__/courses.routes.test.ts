@@ -1,9 +1,6 @@
-import { authorizedTestAgent } from "../../../tests/helper/supertest.helper"
-import { createRandomCourses } from "../../seeds/course.seed"
-import { extractFields } from "../../shared/utils/object.utils"
-
-
-
+import { extractFields, removeFields } from "../../shared/utils/object.utils";
+import { createRandomCourses } from "../../seeds/course.seed";
+import { authorizedTestAgent } from "../../../tests/helper/supertest.helper";
 
 describe('Testing courses' , () => {
     it('GET /courses return all courses', async () => {
