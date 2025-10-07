@@ -1,9 +1,10 @@
 import { faker } from "@faker-js/faker";
-import { PrismaClient } from "../../src/generated/prisma/index.js";
-import { createRandomUser } from "../../src/seeds/user.seed.js";
-import { createRandomCourses } from "../../src/seeds/course.seed.js";
+import { PrismaClient } from "../../src/generated/prisma";
+import { createRandomUser } from "../../src/seeds/user.seed";
+import { createRandomCourses } from "../../src/seeds/course.seed";
 
-const prisma = new PrismaClient ()
+
+const prisma = new PrismaClient()
 
 async function main() {
   // delete all tables db

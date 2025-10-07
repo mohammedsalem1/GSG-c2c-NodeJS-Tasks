@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { User } from '../generated/prisma/index.js';
+import { User } from '../generated/prisma';
 export function createRandomUser() {
  const randomUser: Omit<User,'id'> = {
     name: faker.internet.username(),

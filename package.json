@@ -15,14 +15,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks/issues"
   },
   "homepage": "https://github.com/mohammedsalem1/GSG-c2c-NodeJS-Tasks#readme",
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
-    "@prisma/client": "^6.16.2",
+    "@prisma/client": "^6.16.3",
     "@types/jsonwebtoken": "^9.0.10",
     "argon2": "^0.44.0",
     "dotenv": "^17.2.2",
@@ -32,12 +31,13 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "@types/node": "^24.3.0",
-    "prisma": "^6.16.2",
+    "@types/node": "^24.7.0",
+    "prisma": "^6.16.3",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "npx tsx ./prisma/seeds/seed.ts"
   }
 }

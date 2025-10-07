@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { Course } from "../generated/prisma/index.js";
+import { Course } from "../generated/prisma";
 
 export function createRandomCourses() {
       const randomCourse: Omit<Course, 'authorId' | 'id'> = {

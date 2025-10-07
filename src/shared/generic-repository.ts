@@ -1,54 +1,53 @@
+import type { PrismaClient, Prisma } from "@prisma/client";
 
 
 interface DbEntity {
-    id: string;
+    id: number;
     createdAt?:Date;
     updatedAt?:Date;
 }
 
 interface Repository<T extends DbEntity> {
     findAll(): Promise<T[]>;
-    findById(id: string): Promise<T | null>;
+    findById(id: string): Promise<T>;
     create(payload: T): Promise<T>;
     update(id: string, payload: Partial<T>): Promise<T>;
     delete(id: string): Promise<boolean>;
 }
 
 export class BaseRepository<T extends DbEntity> implements Repository<T> {
-    constructor(protected items: T[]) {}
+ 
+    constructor(protected model: any) {}
 
-    async findAll(): Promise<T[]> {
-        return this.items;
+     findAll(): Promise<T[]> {
+        return this.model.findMany()
     }
 
-    async findById(id: string): Promise<T | null> {
-        return this.items.find(item => item.id === id) ?? null;
+     findById(id: string) {
+        return this.model.findUniqueOrThrow({
+            where:{id :Number(id)}
+        })
     }
 
-    async create(payload: Omit<T, 'id' | 'createdAt' | 'updatedAt'>): Promise<T> {
-        const newItem = { 
-             ...payload, 
-             id: Date.now().toString() ,
-             createdAt:new Date(),
-             updatedAt:new Date()
-            } as T ; 
-        this.items.push(newItem);
-        return newItem;
+     create(payload: Omit<T, 'id' | 'createdAt' | 'updatedAt'>): Promise<T> {
+        const newItem = { ...payload } ; 
+         return this.model.create({ data: newItem });
     }
 
-    async update(id: string, payload: Partial<T>): Promise<T> {
-        const index = this.items.findIndex(item => item.id === id);
-        if (index === -1) {
-            throw new Error("Item not found");
-        }
-        this.items[index] = { ...this.items[index], ...payload } as T;
-        return this.items[index];
+     update(id: string, payload: Partial<T>) {
+        return this.model.update({
+            where: { id :Number(id)},
+            data: payload,
+        })
     }
 
-    async delete(id: string): Promise<boolean> {
-        const initialLength = this.items.length;
-        this.items = this.items.filter(item => item.id !== id);
-        return this.items.length < initialLength;
+     async delete(id: string) {
+        try {
+             await this.model.delete({ where: { id :Number(id)} });
+              return true;
+        } catch {
+        return false;
+      }
     }
 }
 
