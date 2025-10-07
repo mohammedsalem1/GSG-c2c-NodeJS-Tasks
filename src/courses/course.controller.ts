@@ -11,9 +11,14 @@ export class CourseController {
   
    async createCourse(req:Request<{},{},CreateCourseDTO> , res:Response<Course> , next:NextFunction){
       try {
+        const userId = req.user?.id 
+        console.log(userId)
+        if (!userId) {
+          throw new CustomError ('The user is not authenticated' , 'COURSE' , HttpErrorStatus.Unauthorized)
+        }
         const paylaodDate = ZodValidation(CreateCourseDTOSchema , req.body , 'COURSE')
          
-        const course = await courseService.createCourse(paylaodDate)
+        const course = await courseService.createCourse(paylaodDate , userId)
         
         res.create(course)
       } catch (error) {
@@ -27,9 +32,9 @@ export class CourseController {
    async getCourseById(req:Request , res:Response) {
      const courseId  = req.params.id;
      if (!courseId) {
-        return null
+        return null 
      }
-     const course = await courseService.getCourseById(courseId)
+     const course = await courseService.getCourseById(Number(courseId))
       res.ok(course)
    }
    async updateCourse(req:Request , res:Response) {
@@ -37,7 +42,7 @@ export class CourseController {
        if (!courseId) {
         return null
      }
-     const paylaodDate = await courseService.updateCourse(courseId , req.body)
+     const paylaodDate = await courseService.updateCourse(Number(courseId) , req.body)
       res.ok(paylaodDate)
    }
    async deleteCourse(req:Request , res:Response) {
@@ -45,7 +50,7 @@ export class CourseController {
      if (!courseId) {
          throw new CustomError("Course ID is required", "COURSE", HttpErrorStatus.BadRequest);
      }
-      await courseService.deleteCourse(courseId)
+      await courseService.deleteCourse(Number(courseId))
       
      res.ok({ message: "Course deleted successfully" });
    }

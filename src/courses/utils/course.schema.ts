@@ -7,6 +7,7 @@ export const courseSchema = z.object({
   description: z.string() ,
   image: z.string().optional(),
   createdAt: z.date(),
+  authorId: z.number(),
   updatedAt: z.date()
 })
 export const CreateCourseDTOSchema = courseSchema.pick({

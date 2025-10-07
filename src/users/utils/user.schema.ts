@@ -3,7 +3,7 @@ import { Role, type User,   } from '../user.entity.js'
 import type { CreateCoachDTO, UpdateUserDTO } from '../user.dto.js'
 
 export const userSchema = z.object({
-   id: z.string(),
+   id: z.number(),
    name: z.string(),
    email: z.string(),
    password: z.string().min(8),

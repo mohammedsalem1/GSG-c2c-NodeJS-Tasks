@@ -4,22 +4,22 @@ import type { CreateCourseDTO, UpdateCourseDTO } from "./course.dto.js";
 import { courseRepository } from "./course.repository.js";
 
 export class CourseService {
-    async createCourse(payload:CreateCourseDTO) {
-        const courseDate = await courseRepository.create(payload);
+    async createCourse(payload:CreateCourseDTO , userId:number) {
+        const courseDate = await courseRepository.createCourse(payload , userId);
         return courseDate     
     }
     async getAllCourses() {
         const courses = await courseRepository.findAll()
         return courses
     }
-    async getCourseById(courseId:string) {
+    async getCourseById(courseId:number) {
         const course = await courseRepository.findById(courseId)
         if (!course) {
             throw new CustomError("the user don't have course",'COURSE',HttpErrorStatus.BadRequest)
         }
         return course
     }
-    async updateCourse(courseId:string , updateDate:UpdateCourseDTO){
+    async updateCourse(courseId:number , updateDate:UpdateCourseDTO){
     
                 const course = await  courseRepository.update(courseId , updateDate)
                 if (!course) {
@@ -28,7 +28,7 @@ export class CourseService {
                 return course
     }
 
-    async deleteCourse(courseId:string) {
+    async deleteCourse(courseId:number) {
         const isDeleted = await courseRepository.delete(courseId)
         if (!isDeleted) {
             throw new CustomError("the user don't have course",'COURSE',HttpErrorStatus.NotFound)

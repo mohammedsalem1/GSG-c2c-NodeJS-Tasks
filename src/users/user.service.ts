@@ -8,7 +8,7 @@ import { userRepository  } from "./user.repository.js";
 
 export class UserService {
     //    GET /users/me → Get current user profile (protected). 
-        async getCurrentUser(userId: string) {
+        async getCurrentUser(userId: number) {
            const user = await userRepository.findById(userId)
            if (!user) {
               throw new CustomError("The user is not found" , 'USER' , HttpErrorStatus.BadRequest)
@@ -16,7 +16,7 @@ export class UserService {
            return user;
         }
        
-         async updateProfile(paylaodDate:{id:string}& UpdateUserDTO){
+         async updateProfile(paylaodDate:{id:number}& UpdateUserDTO){
 
             const user = await userRepository.update(paylaodDate.id , paylaodDate)
             if (!user) {

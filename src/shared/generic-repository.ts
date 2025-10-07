@@ -9,10 +9,10 @@ interface DbEntity {
 
 interface Repository<T extends DbEntity> {
     findAll(): Promise<T[]>;
-    findById(id: string): Promise<T>;
+    findById(id: number): Promise<T>;
     create(payload: T): Promise<T>;
-    update(id: string, payload: Partial<T>): Promise<T>;
-    delete(id: string): Promise<boolean>;
+    update(id: number, payload: Partial<T>): Promise<T>;
+    delete(id: number): Promise<boolean>;
 }
 
 export class BaseRepository<T extends DbEntity> implements Repository<T> {
@@ -23,7 +23,7 @@ export class BaseRepository<T extends DbEntity> implements Repository<T> {
         return this.model.findMany()
     }
 
-     findById(id: string) {
+     findById(id: number) {
         return this.model.findUniqueOrThrow({
             where:{id :Number(id)}
         })
@@ -34,20 +34,19 @@ export class BaseRepository<T extends DbEntity> implements Repository<T> {
          return this.model.create({ data: newItem });
     }
 
-     update(id: string, payload: Partial<T>) {
+     update(id: number, payload: Partial<T>) {
         return this.model.update({
             where: { id :Number(id)},
             data: payload,
         })
     }
 
-     async delete(id: string) {
-        try {
-             await this.model.delete({ where: { id :Number(id)} });
-              return true;
-        } catch {
-        return false;
-      }
+     async delete(id: number) {
+       
+       const deleteModle = await this.model.delete({ where: { id :Number(id)} });
+       
+         return Boolean(deleteModle)
+
     }
 }
 
