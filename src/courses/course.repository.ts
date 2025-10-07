@@ -1,7 +1,7 @@
 import { prisma } from "../../services/prisma.service.js";
-import { Course } from "../generated/prisma/index.js";
 import { BaseRepository } from "../shared/generic-repository";
 import { CreateCourseDTO } from "./course.dto.js";
+import { Course } from "./course.entity.js";
 
 
 export class CourseRepository extends BaseRepository<Course> {

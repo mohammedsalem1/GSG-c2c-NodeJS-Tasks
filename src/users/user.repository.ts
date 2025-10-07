@@ -1,7 +1,7 @@
 
 import { prisma } from "../../services/prisma.service.js";
-import { User } from "../generated/prisma/index.js";
 import { BaseRepository } from "../shared/generic-repository.js";
+import { User } from "./user.entity.js";
 
 export class UserRepository extends BaseRepository<User> {
    constructor() {

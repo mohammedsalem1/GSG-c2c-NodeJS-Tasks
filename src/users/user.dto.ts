@@ -1,4 +1,4 @@
-import { User } from "../generated/prisma";
+import { User } from "./user.entity";
 
 export type UpdateUserDTO = Partial<Pick<
     User, 'name' | 'email' | 'password'|'role'>>

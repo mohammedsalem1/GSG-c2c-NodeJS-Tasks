@@ -1,8 +1,5 @@
 # Task 9: Update ERD and Integrate Prisma with MySQL
 
-**Student:** Yakoob Hammouri  
-**Due Date:** Oct 1  
-**Points:** 100
 
 ## Description
 Enhance the Task 7 Mini Project (TypeScript Express API) by:
