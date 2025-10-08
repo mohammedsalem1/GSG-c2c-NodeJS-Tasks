@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userController, UsersController } from "./user.controller.js";
 import { isAuthenticated, isAuthorized } from "../shared/middleware/auth.middleware.js";
-import { Role } from "./user.entity.js";
+import { Role } from "../generated/prisma/index.js";
 
 const router = Router();
 router.use(isAuthenticated)

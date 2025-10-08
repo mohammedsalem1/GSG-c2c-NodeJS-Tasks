@@ -5,7 +5,7 @@ export const courseSchema = z.object({
   id: z.string() ,
   title: z.string() ,
   description: z.string() ,
-  image: z.string().optional(),
+  image: z.string().nullable(),
   createdAt: z.date(),
   authorId: z.number(),
   updatedAt: z.date()

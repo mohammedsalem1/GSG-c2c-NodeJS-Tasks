@@ -22,7 +22,7 @@ export const isAuthenticated = async(
               throw new CustomError("Token missing subject", 'AUTH', HttpErrorStatus.Unauthorized);
             }
 
-            const user = await userRepository.findById(decoded.sub);
+            const user = await userRepository.findById(Number(decoded.sub));
             if (!user) {
                 throw new CustomError('User not found' , 'AUTH' , HttpErrorStatus.Unauthorized)
             }

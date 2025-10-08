@@ -1,9 +1,4 @@
-export interface Course {
-  id: number;
-  title: string;
-  description: string;
-  image?: string; 
-  createdAt: Date;
-  updatedAt: Date;
-  authorId: number; 
-}
+import { Course as PrisamCourse} from "../generated/prisma";
+
+
+export type Course  = PrisamCourse

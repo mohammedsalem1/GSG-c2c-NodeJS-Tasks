@@ -1,9 +1,10 @@
 import { createArgonHash } from "../auth/utils/argon.utils.js";
+import { Role } from "../generated/prisma/index.js";
 import { CustomError } from "../shared/exception.js"
 import { removeFields } from "../shared/utils/object.utils.js";
 import { HttpErrorStatus } from "../shared/utils/util.types.js";
 import type {  CreateCoachDTO, CreateResponseCoachDTO, UpdateUserDTO } from "./user.dto.js";
-import { Role, type User } from "./user.entity.js"
+import {  type User } from "./user.entity.js"
 import { userRepository  } from "./user.repository.js";
 
 export class UserService {
