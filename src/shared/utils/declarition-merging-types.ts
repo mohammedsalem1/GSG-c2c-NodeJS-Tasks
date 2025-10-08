@@ -4,13 +4,14 @@ import type { UnifiedApiErrorResponse } from "../middleware/response.middleware.
 export type MyEnvs = {
   PORT: string;
   JWT_SECRET: string;
+  MONGODB_URL:string
 };
 
 declare global {
   namespace NodeJS {
     interface ProcessEnv extends MyEnvs {}
   }
-    namespace Express { 
+  namespace Express { 
       interface Request {
          user?:User
       } 

@@ -7,6 +7,7 @@ import { authRouter } from './auth/auth.routes.js';
 import { seedDate } from './shared/utils/initail-date.js';
 import { courseRouter } from './courses/course.routes.js';
 import { responseEnhancer } from './shared/middleware/response.middleware.js';
+import './services/mongooes.service.js';
 
 const port = process.env.PORT
 const jwt = process.env.JWT_SECRET
