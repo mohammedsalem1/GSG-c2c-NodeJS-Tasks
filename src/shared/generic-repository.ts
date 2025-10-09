@@ -1,4 +1,3 @@
-import type { PrismaClient, Prisma } from "@prisma/client";
 
 
 interface DbEntity {
