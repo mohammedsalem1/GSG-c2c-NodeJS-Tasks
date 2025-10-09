@@ -3,4 +3,4 @@ import { getEnvOrThrow } from "../config/app.config"
 
 mongoose.connect(getEnvOrThrow('MONGODB_URL'))
     .then(() => console.log('Mongodb connected'))
-    .catch((error) => console.log('Mongodb connection error' , error))
+    .catch(() => console.log('Mongodb connection error'))

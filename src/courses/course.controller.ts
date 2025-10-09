@@ -20,8 +20,10 @@ export class CourseController {
         throw new CustomError("the user don't COACH or ADMIN" , 'COURSE' , HttpErrorStatus.Forbidden)
       }
    }  
-   async getAllCourses(req:Request , res:Response){
-      const courses = await courseService.getAllCourses()
+   async getAllCourses(req:Request<{} , {} , {} , {page?:string , limit?:string}> , res:Response){
+      const page = Number(req.query.page) || 1
+      const limit = Number(req.query.limit) || 10
+      const courses = await courseService.getAllCourses(page , limit)
       res.ok(courses)
    }
    async getCourseById(req:Request , res:Response) {

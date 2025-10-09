@@ -4,7 +4,6 @@ import { handleError } from './shared/exception.js';
 import 'dotenv/config'
 import { usersRouter } from './users/user.routes.js';
 import { authRouter } from './auth/auth.routes.js';
-import { seedDate } from './shared/utils/initail-date.js';
 import { courseRouter } from './courses/course.routes.js';
 import { responseEnhancer } from './shared/middleware/response.middleware.js';
 import './services/mongooes.service.js';
@@ -22,7 +21,7 @@ app.use(express.json())
 
 app.use(express.urlencoded())
 app.use(responseEnhancer)
-seedDate()
+// seedDate()
 
 app.use('/auth' , authRouter)
 app.use('/users' , usersRouter)

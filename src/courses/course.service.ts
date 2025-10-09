@@ -8,8 +8,8 @@ export class CourseService {
         const courseDate = await courseRepository.create(payload);
         return courseDate     
     }
-    async getAllCourses() {
-        const courses = await courseRepository.findAll()
+    async getAllCourses(page:number , limit:number) {
+        const courses = await courseRepository.findAll(page , limit)
         return courses
     }
     async getCourseById(courseId:string) {

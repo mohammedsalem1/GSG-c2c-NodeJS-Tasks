@@ -2,7 +2,7 @@ import { BaseRepository } from "../shared/generic-repository.js";
 import { users } from "../shared/utils/initail-date.js";
 import type { User } from "./user.entity.js";
 
-export class UserRepository extends BaseRepository<User> {
+export class UserRepository implements BaseRepository<User> {
    
    constructor(){
         super(users)

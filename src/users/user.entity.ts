@@ -1,10 +1,12 @@
+import { ObjectId } from "mongoose";
+
 export enum Role {
   ADMIN = "ADMIN" , 
   COACH = "COACH" , 
   STUDENT = "STUDENT"
 } 
 export interface User {
-  id: string;
+  id: ObjectId;
   name: string;
   email: string;
   password: string;
