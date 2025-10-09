@@ -3,7 +3,7 @@ import { User } from "./user.entity";
 
 const userSchema = new mongoose.Schema<User>({
       name: {type: String , required:true},
-      email: {type: String , required:true},
+      email: {type: String , required:true , unique:true},
       password: {
         type: String ,
         validate: {
@@ -21,3 +21,5 @@ const userSchema = new mongoose.Schema<User>({
     }
   }
 })
+
+export const UserModel = mongoose.model<User>('User' , userSchema)

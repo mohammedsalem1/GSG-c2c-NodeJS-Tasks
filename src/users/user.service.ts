@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { createArgonHash } from "../auth/utils/argon.utils.js";
 import { CustomError } from "../shared/exception.js"
 import { removeFields } from "../shared/utils/object.utils.js";
@@ -17,8 +18,8 @@ export class UserService {
         }
        
          async updateProfile(paylaodDate:{id:string}& UpdateUserDTO){
-
-            const user = await userRepository.update(paylaodDate.id , paylaodDate)
+            const {id , ...updateDate} = paylaodDate
+            const user = await userRepository.update(paylaodDate.id , updateDate)
             if (!user) {
                throw new CustomError('user not found','USER',HttpErrorStatus.BadRequest)
             }

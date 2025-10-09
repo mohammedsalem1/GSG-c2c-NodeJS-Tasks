@@ -23,8 +23,8 @@ export class CourseController {
    async getAllCourses(req:Request<{} , {} , {} , {page?:string , limit?:string}> , res:Response){
       const page = Number(req.query.page) || 1
       const limit = Number(req.query.limit) || 10
-      const courses = await courseService.getAllCourses(page , limit)
-      res.ok(courses)
+      const {data , totalRecords} = await courseService.getAllCourses(page , limit)
+      res.paginationResponse(data ,{page , limit , totalRecords} )
    }
    async getCourseById(req:Request , res:Response) {
      const courseId  = req.params.id;
@@ -34,20 +34,20 @@ export class CourseController {
      const course = await courseService.getCourseById(courseId)
       res.ok(course)
    }
-   async updateCourse(req:Request , res:Response) {
+    updateCourse(req:Request , res:Response) {
       const courseId = req.params.id;
        if (!courseId) {
         return null
      }
-     const paylaodDate = await courseService.updateCourse(courseId , req.body)
+     const paylaodDate =  courseService.updateCourse(courseId , req.body)
       res.ok(paylaodDate)
    }
-   async deleteCourse(req:Request , res:Response) {
+    deleteCourse(req:Request , res:Response) {
      const courseId = req.params.id;
      if (!courseId) {
          throw new CustomError("Course ID is required", "COURSE", HttpErrorStatus.BadRequest);
      }
-      await courseService.deleteCourse(courseId)
+       courseService.deleteCourse(courseId)
       
      res.ok({ message: "Course deleted successfully" });
    }

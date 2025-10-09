@@ -1,14 +1,15 @@
-import { BaseRepository } from "../shared/generic-repository.js";
-import { users } from "../shared/utils/initail-date.js";
-import type { User } from "./user.entity.js";
+import { BaseRepository } from "../shared/generic-repository";
+import type { User } from "./user.entity";
+import { UserModel } from "./user.model";
 
-export class UserRepository implements BaseRepository<User> {
-   
-   constructor(){
-        super(users)
-    }
-    async findByEmail(email:string):Promise<User | null> {
-      return  this.items.find(item => item.email === email)|| null
-    }
+export class UserRepository extends BaseRepository<User> {
+  constructor() {
+    super(UserModel);
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.model.findOne({ email }).exec();
+  }
 }
+
 export const userRepository = new UserRepository();

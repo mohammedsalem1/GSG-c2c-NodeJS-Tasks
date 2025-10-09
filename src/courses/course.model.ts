@@ -6,6 +6,7 @@ import { Course } from "./course.entity";
   description:  {type:String , require:true},
   image:  {type:String , required:false },
 } , {
+  // create id , createdat , updateat 
     timestamps:true
 })
 
